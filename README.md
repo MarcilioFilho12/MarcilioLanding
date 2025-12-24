@@ -30,40 +30,9 @@ Git & GitHub
 
 ⚙️ Como rodar o projeto localmente
 
-Clone o repositório:
-
-git clone https://github.com/MarcilioFilho12/MarcilioLanding.git
 
 
-Entre na pasta do projeto:
 
-cd MarcilioLanding
-
-
-Instale as dependências:
-
-npm install
-
-
-Inicie o servidor de desenvolvimento:
-
-npm run dev
-
-
-Acesse no navegador:
-
-http://localhost:3000
-
-🧹 Qualidade de código
-
-Rodar lint:
-
-npm run lint
-
-
-Formatar código:
-
-npx prettier . --write
 
 
 O projeto segue padrões de código utilizados em ambientes profissionais.
