@@ -58,14 +58,5 @@ Marcílio Alano Filho
 Desenvolvedor Front-end
 GitHub: @MarcilioFilho12
 
-Visão clara
 
-Esse README:
 
-é simples
-
-é honesto
-
-é profissional
-
-não promete o que não existe
