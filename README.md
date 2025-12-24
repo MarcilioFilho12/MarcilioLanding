@@ -1,75 +1,102 @@
-# Nuxt Minimal Starter
+Portfólio – Marcílio Alano Filho
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Este repositório contém meu portfólio profissional, desenvolvido com Nuxt 3, focado em performance, organização de código e boas práticas de front-end moderno.
 
-## Setup
+O objetivo do projeto é apresentar meus trabalhos, estudos e evolução como desenvolvedor, utilizando tecnologias atuais do ecossistema JavaScript.
 
-Make sure to install dependencies:
+🚀 Tecnologias utilizadas
 
-```bash
-# npm
+Nuxt 3
+
+Vue 3
+
+Tailwind CSS
+
+ESLint
+
+Prettier
+
+Node.js / npm
+
+Git & GitHub
+
+📁 Estrutura do projeto
+├─ pages/          # Páginas da aplicação
+├─ components/     # Componentes reutilizáveis
+├─ assets/         # Estilos e assets
+├─ public/         # Arquivos públicos
+├─ nuxt.config.ts  # Configuração do Nuxt
+└─ package.json    # Dependências e scripts
+
+⚙️ Como rodar o projeto localmente
+
+Clone o repositório:
+
+git clone https://github.com/MarcilioFilho12/MarcilioLanding.git
+
+
+Entre na pasta do projeto:
+
+cd MarcilioLanding
+
+
+Instale as dependências:
+
 npm install
 
-# pnpm
-pnpm install
 
-# yarn
-yarn install
+Inicie o servidor de desenvolvimento:
 
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
 npm run dev
 
-# pnpm
-pnpm dev
 
-# yarn
-yarn dev
+Acesse no navegador:
 
-# bun
-bun run dev
-```
+http://localhost:3000
 
-## Production
+🧹 Qualidade de código
 
-Build the application for production:
+Rodar lint:
 
-```bash
-# npm
-npm run build
+npm run lint
 
-# pnpm
-pnpm build
 
-# yarn
-yarn build
+Formatar código:
 
-# bun
-bun run build
-```
+npx prettier . --write
 
-Locally preview production build:
 
-```bash
-# npm
-npm run preview
+O projeto segue padrões de código utilizados em ambientes profissionais.
 
-# pnpm
-pnpm preview
+🎯 Objetivo do projeto
 
-# yarn
-yarn preview
+Consolidar conhecimentos em Nuxt e Vue
 
-# bun
-bun run preview
-```
+Aplicar boas práticas de front-end
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+Servir como vitrine profissional
+
+Evoluir continuamente com novos projetos e funcionalidades
+
+📌 Status
+
+🚧 Em desenvolvimento contínuo
+Novas seções, melhorias visuais e conteúdos serão adicionados.
+
+👤 Autor
+
+Marcílio Alano Filho
+Desenvolvedor Front-end
+GitHub: @MarcilioFilho12
+
+Visão clara
+
+Esse README:
+
+é simples
+
+é honesto
+
+é profissional
+
+não promete o que não existe
