@@ -54,9 +54,14 @@
           <!-- Photo -->
           <div class="relative group">
             <div class="absolute inset-0 bg-gradient-to-r from-[#3D3DA4] to-[#8282D5] rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity"></div>
-            <div class="relative bg-[#07070D] p-2 rounded-2xl">
-              <div class="w-full aspect-square rounded-xl bg-gradient-to-br from-[#3D3DA4] via-[#6565C0] to-[#8282D5] flex items-center justify-center">
-                <span class="text-6xl">👤</span>
+            <div class="relative bg-[#07070D] p-4 rounded-2xl">
+              <div class="w-full aspect-[4/5] rounded-xl overflow-hidden relative bg-gradient-to-br from-[#3D3DA4] via-[#6565C0] to-[#8282D5]">
+                <img 
+                  :src="fotoPerfil" 
+                  alt="Marcílio Alano Filho" 
+                  class="foto-Perfil w-full h-full object-contain rounded-xl transition-transform duration-300 group-hover:scale-105"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>
@@ -266,6 +271,9 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
+// Usar imagem da pasta public (mais confiável no Nuxt)
+const fotoPerfil = '/foto-perfil.png'
+
 const skills = ref([
   { name: 'Vue.js', level: 95, icon: '💚' },
   { name: 'Nuxt', level: 90, icon: '⚡' },
@@ -369,5 +377,10 @@ const getParticleStyle = (particle) => {
   animation: float infinite ease-in-out;
   --float-x: calc(var(--random-x, 0) * 50px);
   --float-y: calc(var(--random-y, 0) * 50px);
+}
+
+.foto-Perfil {
+  object-position: center;
+  object-fit: contain;
 }
 </style>
