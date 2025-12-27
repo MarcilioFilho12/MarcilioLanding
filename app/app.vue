@@ -3,16 +3,15 @@
     <!-- Hero Section -->
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
       <!-- Animated Background -->
-      <div class="absolute inset-0">
-        <div class="absolute inset-0 bg-gradient-to-br from-[#3D3DA4] via-[#07070D] to-[#6565C0] opacity-30"></div>
-        <div class="particles-container">
-          <div v-for="particle in particles" :key="particle.id" 
-               class="particle"
-               :style="getParticleStyle(particle)">
-          </div>
-        </div>
-      </div>
-      
+     <!-- Starfield Background -->
+     <div class="absolute inset-0 bg-gradient-to-b 
+     from-[#0A0218] via-[#0E0424] to-[#05000D]">
+     <div class="absolute inset-0 overflow-hidden pointer-events-none">
+  <div class="stars stars-far"></div>
+  <div class="stars stars-mid"></div>
+  <div class="stars stars-near"></div>
+</div>
+</div>
       <!-- Hero Content -->
       <div class="relative z-10 text-center px-4">
         <h1 class="text-6xl md:text-8xl font-bold mb-6 animate-fade-in">
@@ -23,14 +22,49 @@
         <p class="text-xl md:text-3xl text-[#8282D5] mb-8 animate-fade-in-delay">
           Desenvolvedor Front-end
         </p>
-        <div class="flex gap-4 justify-center animate-fade-in-delay-2">
-          <button class="px-8 py-3 bg-gradient-to-r from-[#3D3DA4] to-[#6565C0] rounded-lg hover:scale-105 transition-transform duration-300">
-            Download CV
-          </button>
-          <button class="px-8 py-3 border-2 border-[#8282D5] rounded-lg hover:bg-[#8282D5] hover:bg-opacity-10 transition-all duration-300">
-            Entre em Contato
-          </button>
-        </div>
+        <div class="flex flex-wrap gap-4 justify-center animate-fade-in-delay-2">
+
+<!-- Download CV -->
+<a
+  :href="cvUrl"
+  download
+  class="px-8 py-3 bg-gradient-to-r from-[#3D3DA4] to-[#6565C0]
+         rounded-lg font-medium
+         hover:scale-105 hover:shadow-xl
+         transition-all duration-300"
+>
+  Download CV
+</a>
+
+<!-- WhatsApp -->
+<a
+  :href="`https://wa.me/${whatsappNumber}`"
+  target="_blank"
+  class="px-8 py-3 border-2 border-[#8282D5]
+         rounded-lg font-medium
+         hover:bg-[#8282D5] hover:bg-opacity-10
+         hover:scale-105
+         transition-all duration-300"
+>
+  Entre em Contato
+</a>
+
+<!-- LinkedIn -->
+<a
+  :href="linkedinUrl"
+  target="_blank"
+  class="px-8 py-3 border border-[#a78bfa]
+         rounded-lg font-medium
+         text-[#c4b5fd]
+         hover:bg-[#a78bfa] hover:text-black
+         hover:scale-105
+         transition-all duration-300"
+>
+  LinkedIn
+</a>
+
+</div>
+        
       </div>
 
       <!-- Scroll Indicator -->
@@ -43,28 +77,36 @@
 
     <!-- Quem Sou Section -->
     <section id="about" class="py-20 px-4 bg-gradient-to-b from-[#07070D] to-[#0a0a12]">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-5xl font-bold text-center mb-16">
-          <span class="bg-gradient-to-r from-[#8282D5] to-[#6565C0] bg-clip-text text-transparent">
-            Sobre mim
-          </span>
-        </h2>
-        
-        <div class="grid md:grid-cols-2 gap-12 items-center">
-          <!-- Photo -->
-          <div class="relative group">
-            <div class="absolute inset-0 bg-gradient-to-r from-[#3D3DA4] to-[#8282D5] rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity"></div>
-            <div class="relative bg-[#07070D] p-4 rounded-2xl">
-              <div class="w-full aspect-[4/5] rounded-xl overflow-hidden relative bg-gradient-to-br from-[#3D3DA4] via-[#6565C0] to-[#8282D5]">
-                <img 
-                  :src="fotoPerfil" 
-                  alt="Marcílio Alano Filho" 
-                  class="foto-Perfil w-full h-full object-contain rounded-xl transition-transform duration-300 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </div>
-            </div>
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-5xl font-bold text-center mb-16">
+      <span class="bg-gradient-to-r from-[#8282D5] to-[#6565C0] bg-clip-text text-transparent">
+        Sobre mim
+      </span>
+    </h2>
+
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <!-- Video -->
+      <div class="relative group">
+        <div class="absolute inset-0 bg-gradient-to-r from-[#3D3DA4] to-[#8282D5] rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity"></div>
+
+        <div class="relative bg-[#07070D] p-4 rounded-2xl">
+          <div class="w-full aspect-[4/5] rounded-xl overflow-hidden relative bg-gradient-to-br from-[#3D3DA4] via-[#6565C0] to-[#8282D5]">
+            
+            <video
+              autoplay
+              muted
+              loop
+              playsinline
+              class="foto-Perfil w-full h-full object-contain rounded-xl transition-transform duration-300 group-hover:scale-105"
+            >
+              <source :src="fotoPerfil" type="video/mp4" />
+              Seu navegador não suporta vídeo.
+            </video>
+
           </div>
+        </div>
+      </div>
+
 
           <!-- Bio -->
           <div class="space-y-6">
@@ -271,8 +313,12 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
+
+const cvUrl = '/files/marcilio-alano-cv.pdf' // <-- coloque seu arquivo aqui
+const whatsappNumber = '5548999999999' // <-- coloque seu número aqui
+const linkedinUrl = 'https://www.linkedin.com/in/seu-linkedin'
 // Usar imagem da pasta public (mais confiável no Nuxt)
-const fotoPerfil = '/foto-perfil.png'
+const fotoPerfil = 'video_1766790806011.mp4'
 
 const skills = ref([
   { name: 'Vue.js', level: 95, icon: '💚' },
@@ -346,27 +392,59 @@ const getParticleStyle = (particle) => {
 }
 </script>
 
+
 <style scoped>
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.4;
+    filter: brightness(0.9);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.3);
+  }
+  100% {
+    opacity: 0.5;
+    filter: brightness(1);
+  }
 }
 
-@keyframes float {
-  0%, 100% { transform: translate(0, 0); }
-  50% { transform: translate(var(--float-x), var(--float-y)); }
+.stars {
+  position: absolute;
+  inset: -150px;
+  background-repeat: repeat;
+  animation: shimmer ease-in-out infinite;
 }
 
-.animate-fade-in {
-  animation: fadeIn 1s ease-out;
+/* Estrelas distantes – quase imóveis */
+.stars-far {
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, #a78bfa 40%, transparent 100%),
+    radial-gradient(1px 1px at 70% 80%, #c4b5fd 40%, transparent 100%);
+  background-size: 700px 700px;
+  animation-duration: 9s;
+  opacity: 0.35;
 }
 
-.animate-fade-in-delay {
-  animation: fadeIn 1s ease-out 0.3s both;
+/* Camada média */
+.stars-mid {
+  background-image:
+    radial-gradient(1.5px 1.5px at 40% 60%, #ddd6fe 40%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 80% 30%, #e9d5ff 40%, transparent 100%);
+  background-size: 500px 500px;
+  animation-duration: 6s;
+  opacity: 0.6;
 }
 
-.animate-fade-in-delay-2 {
-  animation: fadeIn 1s ease-out 0.6s both;
+/* Estrelas próximas – mais brilho */
+.stars-near {
+  background-image:
+    radial-gradient(2px 2px at 50% 50%, #ffffff 40%, transparent 100%),
+    radial-gradient(2px 2px at 90% 15%, #f5f3ff 40%, transparent 100%);
+  background-size: 350px 350px;
+  animation-duration: 4s;
+  opacity: 0.85;
 }
 
 .particle {
@@ -380,7 +458,7 @@ const getParticleStyle = (particle) => {
 }
 
 .foto-Perfil {
-  object-position: center;
+  object-position: center 25%;
   object-fit: contain;
 }
 </style>
