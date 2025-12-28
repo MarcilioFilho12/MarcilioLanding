@@ -2,16 +2,15 @@
   <div class="min-h-screen bg-[#07070D] text-white">
     <!-- Hero Section -->
     <section id="home" class="relative min-h-screen flex items-center justify-center overflow-hidden">
-      <!-- Animated Background -->
+ 
      <!-- Starfield Background -->
-     <div class="absolute inset-0 bg-gradient-to-b 
-     from-[#0A0218] via-[#0E0424] to-[#05000D]">
-     <div class="absolute inset-0 overflow-hidden pointer-events-none">
-  <div class="stars stars-far"></div>
-  <div class="stars stars-mid"></div>
-  <div class="stars stars-near"></div>
+<!-- Starfield Background -->
+<div class="absolute inset-0 overflow-hidden pointer-events-none">
+  <div class="stars layer-1"></div>
+  <div class="stars layer-2"></div>
+  <div class="stars layer-3"></div>
 </div>
-</div>
+
       <!-- Hero Content -->
       <div class="relative z-10 text-center px-4">
         <h1 class="text-6xl md:text-8xl font-bold mb-6 animate-fade-in">
@@ -38,12 +37,11 @@
 
 <!-- WhatsApp -->
 <a
-  :href="`https://wa.me/${whatsappNumber}`"
+:href="`https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodeURIComponent('Olá Marcílio, vim pelo seu portfólio')}`"
   target="_blank"
-  class="px-8 py-3 border-2 border-[#8282D5]
+  class="px-8 py-3 bg-gradient-to-r from-[#3D3DA4] to-[#6565C0]
          rounded-lg font-medium
-         hover:bg-[#8282D5] hover:bg-opacity-10
-         hover:scale-105
+         hover:scale-105 hover:shadow-xl
          transition-all duration-300"
 >
   Entre em Contato
@@ -53,14 +51,24 @@
 <a
   :href="linkedinUrl"
   target="_blank"
-  class="px-8 py-3 border border-[#a78bfa]
+  class="px-8 py-3 bg-gradient-to-r from-[#3D3DA4] to-[#6565C0]
          rounded-lg font-medium
-         text-[#c4b5fd]
-         hover:bg-[#a78bfa] hover:text-black
-         hover:scale-105
-         transition-all duration-300"
+         hover:scale-105 hover:shadow-xl
+         transition-all duration-300""
 >
   LinkedIn
+</a>
+
+<!-- Github -->
+<a
+  :href="githubUrl"
+  target="_blank"
+  class="px-8 py-3 bg-gradient-to-r from-[#3D3DA4] to-[#6565C0]
+         rounded-lg font-medium
+         hover:scale-105 hover:shadow-xl
+         transition-all duration-300""
+>
+  Github
 </a>
 
 </div>
@@ -315,10 +323,25 @@ import { ref, onMounted } from 'vue'
 
 
 const cvUrl = '/files/marcilio-alano-cv.pdf' // <-- coloque seu arquivo aqui
-const whatsappNumber = '5548999999999' // <-- coloque seu número aqui
-const linkedinUrl = 'https://www.linkedin.com/in/seu-linkedin'
+const whatsappNumber = '5548998685502' // <-- coloque seu número aqui
+const linkedinUrl = 'https://www.linkedin.com/in/marcilio-filho1110/'
+const githubUrl = 'https://github.com/MarcilioFilho12'
 // Usar imagem da pasta public (mais confiável no Nuxt)
 const fotoPerfil = 'video_1766790806011.mp4'
+
+
+function openWhatsApp() {
+  const message = 'Olá, vim pelo seu portfólio'
+  const encodedMessage = encodeURIComponent(message)
+
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+
+  const url = isMobile
+    ? `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+    : `https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`
+
+  window.open(url, '_blank')
+}
 
 const skills = ref([
   { name: 'Vue.js', level: 95, icon: '💚' },
@@ -395,70 +418,59 @@ const getParticleStyle = (particle) => {
 
 <style scoped>
 
-@keyframes shimmer {
-  0% {
-    opacity: 0.4;
-    filter: brightness(0.9);
+@keyframes drift {
+  from {
+    transform: translate3d(0, 0, 0);
   }
-  50% {
-    opacity: 1;
-    filter: brightness(1.3);
-  }
-  100% {
-    opacity: 0.5;
-    filter: brightness(1);
+  to {
+    transform: translate3d(-300px, -600px, 0);
   }
 }
 
+@keyframes twinkle {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .stars {
   position: absolute;
-  inset: -150px;
+  inset: -200px;
   background-repeat: repeat;
-  animation: shimmer ease-in-out infinite;
+  animation: drift linear infinite, twinkle ease-in-out infinite alternate;
 }
 
-/* Estrelas distantes – quase imóveis */
-.stars-far {
-  background-image:
-    radial-gradient(1px 1px at 10% 20%, #a78bfa 40%, transparent 100%),
-    radial-gradient(1px 1px at 70% 80%, #c4b5fd 40%, transparent 100%);
-  background-size: 700px 700px;
-  animation-duration: 9s;
-  opacity: 0.35;
+/* Camada mais distante */
+.layer-1 {
+  background-image: radial-gradient(1px 1px at 20% 30%, #ffffff88 50%, transparent 100%),
+                    radial-gradient(1px 1px at 80% 70%, #ffffff55 50%, transparent 100%);
+  background-size: 600px 600px;
+  animation-duration: 180s, 6s;
+  opacity: 0.4;
 }
 
 /* Camada média */
-.stars-mid {
-  background-image:
-    radial-gradient(1.5px 1.5px at 40% 60%, #ddd6fe 40%, transparent 100%),
-    radial-gradient(1.5px 1.5px at 80% 30%, #e9d5ff 40%, transparent 100%);
-  background-size: 500px 500px;
-  animation-duration: 6s;
+.layer-2 {
+  background-image: radial-gradient(1.5px 1.5px at 10% 40%, #b8b8ff 50%, transparent 100%),
+                    radial-gradient(1.5px 1.5px at 60% 80%, #d0d0ff 50%, transparent 100%);
+  background-size: 400px 400px;
+  animation-duration: 120s, 4s;
   opacity: 0.6;
 }
 
-/* Estrelas próximas – mais brilho */
-.stars-near {
-  background-image:
-    radial-gradient(2px 2px at 50% 50%, #ffffff 40%, transparent 100%),
-    radial-gradient(2px 2px at 90% 15%, #f5f3ff 40%, transparent 100%);
-  background-size: 350px 350px;
-  animation-duration: 4s;
-  opacity: 0.85;
-}
-
-.particle {
-  position: absolute;
-  background: radial-gradient(circle, #8282D5 0%, transparent 70%);
-  border-radius: 50%;
-  pointer-events: none;
-  animation: float infinite ease-in-out;
-  --float-x: calc(var(--random-x, 0) * 50px);
-  --float-y: calc(var(--random-y, 0) * 50px);
+/* Camada próxima */
+.layer-3 {
+  background-image: radial-gradient(2px 2px at 50% 50%, #ffffff 50%, transparent 100%),
+                    radial-gradient(2px 2px at 90% 20%, #e0e0ff 50%, transparent 100%);
+  background-size: 250px 250px;
+  animation-duration: 80s, 3s;
+  opacity: 0.8;
 }
 
 .foto-Perfil {
-  object-position: center 25%;
+  object-position: center 30%;
   object-fit: contain;
 }
 </style>
