@@ -153,38 +153,57 @@
       </div>
     </section>
 
-    <!-- Habilidades Section -->
     <section id="skills" class="py-20 px-4">
-      <div class="max-w-6xl mx-auto">
-        <h2 class="text-5xl font-bold text-center mb-16">
-          <span class="bg-gradient-to-r from-[#8282D5] to-[#6565C0] bg-clip-text text-transparent">
-            Habilidades
-          </span>
-        </h2>
+  <div class="max-w-6xl mx-auto">
+    <h2 class="text-5xl font-bold text-center mb-16">
+      <span class="bg-gradient-to-r from-[#8282D5] to-[#6565C0] bg-clip-text text-transparent">
+        Habilidades
+      </span>
+    </h2>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div v-for="skill in skills" :key="skill.name"
-               class="group relative bg-gradient-to-br from-[#0a0a12] to-[#07070D] p-6 rounded-xl border border-[#3D3DA4] hover:border-[#8282D5] transition-all duration-300 hover:scale-105">
-            <div class="absolute inset-0 bg-gradient-to-r from-[#3D3DA4] to-[#6565C0] opacity-0 group-hover:opacity-10 rounded-xl transition-opacity"></div>
-            
-            <div class="relative">
-              <div class="flex items-center justify-between mb-4">
-                <h3 class="text-xl font-semibold text-[#8282D5]">{{ skill.name }}</h3>
-                <span class="text-2xl">{{ skill.icon }}</span>
-              </div>
-              
-              <div class="w-full bg-[#07070D] rounded-full h-3 mb-2">
-                <div class="h-3 rounded-full bg-gradient-to-r from-[#3D3DA4] to-[#8282D5] transition-all duration-1000"
-                     :style="{ width: skill.level + '%' }">
-                </div>
-              </div>
-              
-              <p class="text-sm text-gray-400">{{ skill.level }}% Proficiência</p>
-            </div>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div
+        v-for="skill in skills"
+        :key="skill.name"
+        class="group relative p-6 rounded-xl 
+               bg-gradient-to-br from-[#E8E8FF] to-[#DADAFF]
+               border border-white/70
+               shadow-lg hover:shadow-xl
+               transition-all duration-300 hover:-translate-y-1"
+      >
+        <!-- brilho sutil -->
+        <div class="absolute inset-0 rounded-xl bg-white opacity-0 group-hover:opacity-10 transition-opacity"></div>
+
+        <div class="relative flex flex-col items-center text-center gap-4">
+          
+          <!-- Ícone -->
+          <div
+            class="flex items-center justify-center w-14 h-14 rounded-xl
+                   bg-white border border-white shadow-md
+                   group-hover:scale-110 transition-transform duration-300"
+          >
+            <img
+              :src="skill.icon"
+              :alt="skill.name"
+              class="w-8 h-8 object-contain"
+            />
           </div>
+
+          <!-- Nome -->
+          <h3 class="text-lg font-semibold text-[#2A2A5E]">
+            {{ skill.name }}
+          </h3>
+
+          <!-- Categoria -->
+          <span class="text-xs uppercase tracking-wider text-[#4B4BA6]">
+            {{ skill.category }}
+          </span>
+
         </div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
     <!-- Projetos Section -->
     <section id="projects" class="py-20 px-4 bg-gradient-to-b from-[#07070D] to-[#0a0a12]">
@@ -345,34 +364,15 @@ Vi seu portfólio e gostaria de conversar.
 
 
 const skills = ref([
-  { name: 'Vue.js', level: 95, icon: '💚' },
-  { name: 'Nuxt', level: 90, icon: '⚡' },
-  { name: 'JavaScript', level: 92, icon: '🟨' },
-  { name: 'TypeScript', level: 85, icon: '🔷' },
-  { name: 'Tailwind CSS', level: 95, icon: '🎨' },
-  { name: 'React', level: 80, icon: '⚛️' },
+  { name: 'Vue.js', icon: '/icons/vuedotjs.svg', category: 'Framework' },
+  { name: 'Nuxt 3', icon: '/icons/nuxt.svg', category: 'Framework' },
+  { name: 'JavaScript (ES6+)', icon: '/icons/javascript.svg', category: 'Core' },
+  { name: 'TypeScript', icon: '/icons/typescript.svg', category: 'Core' },
+  { name: 'Tailwind CSS', icon: '/icons/tailwindcss.svg', category: 'Styling' },
+  { name: 'React', icon: '/icons/react.svg', category: 'Framework' }
 ])
 
-const projects = ref([
-  {
-    title: 'E-commerce Moderno',
-    description: 'Plataforma de vendas com carrinho, checkout e dashboard admin.',
-    tech: ['Vue 3', 'Nuxt', 'Tailwind'],
-    icon: '🛒'
-  },
-  {
-    title: 'Dashboard Analytics',
-    description: 'Sistema de visualização de dados em tempo real com gráficos interativos.',
-    tech: ['Vue', 'Chart.js', 'API'],
-    icon: '📊'
-  },
-  {
-    title: 'App de Tarefas',
-    description: 'Gerenciador de projetos e tarefas com drag-and-drop.',
-    tech: ['Nuxt 3', 'Pinia', 'Tailwind'],
-    icon: '✅'
-  },
-])
+
 
 // Criar partículas com valores fixos (gerados uma única vez)
 const particles = ref([])
