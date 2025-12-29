@@ -322,7 +322,7 @@
 import { ref, onMounted } from 'vue'
 
 
-const cvUrl = '/files/marcilio-alano-cv.pdf' // <-- coloque seu arquivo aqui
+const cvUrl = 'MARCÍLIO ALANO FILHOCV.pdf' // <-- coloque seu arquivo aqui
 const whatsappNumber = '5548998685502' // <-- coloque seu número aqui
 const linkedinUrl = 'https://www.linkedin.com/in/marcilio-filho1110/'
 const githubUrl = 'https://github.com/MarcilioFilho12'
