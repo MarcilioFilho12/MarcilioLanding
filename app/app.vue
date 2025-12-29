@@ -323,7 +323,7 @@ import { ref, onMounted } from 'vue'
 
 
 const cvUrl = 'MARCÍLIO ALANO FILHOCV.pdf' // <-- coloque seu arquivo aqui
-const whatsappNumber = '5548998685502' // <-- coloque seu número aqui
+const whatsappNumber = '5548996385461' // <-- coloque seu número aqui
 const linkedinUrl = 'https://www.linkedin.com/in/marcilio-filho1110/'
 const githubUrl = 'https://github.com/MarcilioFilho12'
 // Usar imagem da pasta public (mais confiável no Nuxt)
@@ -331,17 +331,18 @@ const fotoPerfil = 'video_1766790806011.mp4'
 
 
 function openWhatsApp() {
-  const message = 'Olá, vim pelo seu portfólio'
+  const message = `
+Olá! 👋
+Vi seu portfólio e gostaria de conversar.
+`.trim()
+
   const encodedMessage = encodeURIComponent(message)
 
-  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent)
+  const url = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
 
-  const url = isMobile
-    ? `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
-    : `https://web.whatsapp.com/send?phone=${whatsappNumber}&text=${encodedMessage}`
-
-  window.open(url, '_blank')
+  window.open(url, '_blank', 'noopener,noreferrer')
 }
+
 
 const skills = ref([
   { name: 'Vue.js', level: 95, icon: '💚' },
