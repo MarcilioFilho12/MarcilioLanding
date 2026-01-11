@@ -311,9 +311,9 @@ Vi seu portfólio e gostaria de conversar.
 
   const encodedMessage = encodeURIComponent(message)
 
-  const url = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`
+  const url = `whatsapp://send?phone=${whatsappNumber}&text=${encodedMessage}`
 
-  window.open(url, '_blank', 'noopener,noreferrer')
+  window.location.href = url
 }
 
 
