@@ -266,7 +266,7 @@
 </template>
 
 <script setup>
-const cvUrl = 'MARCÍLIO ALANO FILHOCV (3).pdf'
+const cvUrl = 'MARCÍLIO ALANO FILHOCV(origin).docx'
 const linkedinUrl = 'https://www.linkedin.com/in/marcilio-filho1110/'
 const githubUrl = 'https://github.com/MarcilioFilho12'
 const fotoPerfil = 'video_1766790806011.mp4'
