@@ -9,6 +9,15 @@
         <div class="stars layer-1"></div>
         <div class="stars layer-2"></div>
         <div class="stars layer-3"></div>
+
+        <!-- Estrelas cadentes -->
+        <div class="shooting-star" style="--delay: 0s;   --top: 12%; --left: 70%"></div>
+        <div class="shooting-star" style="--delay: 2.4s; --top: 5%;  --left: 40%"></div>
+        <div class="shooting-star" style="--delay: 5.1s; --top: 20%; --left: 85%"></div>
+        <div class="shooting-star" style="--delay: 7.8s; --top: 8%;  --left: 55%"></div>
+        <div class="shooting-star" style="--delay: 11s;  --top: 15%; --left: 25%"></div>
+        <div class="shooting-star" style="--delay: 14.3s;--top: 3%;  --left: 60%"></div>
+        <div class="shooting-star" style="--delay: 17s;  --top: 22%; --left: 90%"></div>
       </div>
 
       <!-- Hero Content -->
@@ -451,6 +460,53 @@ onMounted(() => {
 }
 .skill-card:hover .card-overlay {
   background: rgba(0, 0, 0, 0.08);
+}
+
+/* ─── Estrelas cadentes ─────────────────────────────── */
+.shooting-star {
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  width: 160px;
+  height: 1.5px;
+  background: linear-gradient(to right, transparent, #c8c8ff 40%, #ffffff 60%, transparent);
+  border-radius: 9999px;
+  transform: rotate(-35deg);
+  transform-origin: right center;
+  opacity: 0;
+  animation: shoot 10s linear var(--delay, 0s) infinite;
+}
+
+/* Brilho extra na ponta */
+.shooting-star::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  translate: 0 -50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #ffffff;
+  box-shadow: 0 0 6px 2px #a0a0ff;
+}
+
+@keyframes shoot {
+  0% {
+    opacity: 0;
+    transform: rotate(-35deg) translateX(0);
+  }
+  2% {
+    opacity: 1;
+  }
+  12% {
+    opacity: 0;
+    transform: rotate(-35deg) translateX(-380px);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(-35deg) translateX(-380px);
+  }
 }
 
 /* ─── Bio cards ─────────────────────────────────────── */
